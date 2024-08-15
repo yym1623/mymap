@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import map from './components/map.vue'
+import maps from './components/maps.vue'
 </script>
 
 <template>
-  <map></map>
+  <maps></maps>
 </template>
 
 <style lang="scss" scoped>
