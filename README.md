@@ -1,5 +1,41 @@
-# Vue 3 + TypeScript + Vite
+# 모두저장
+![vue](https://img.shields.io/badge/Vue3-4FC08D)
+![typescript](https://img.shields.io/badge/typescript-3267a8)
+![vite](https://img.shields.io/badge/vite-5132a8)
+![nextjs](https://img.shields.io/badge/nextjs-000000)
+<br />
+모두저장 ([DEMO]())
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![image]()
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+토이 프로젝트(FrontEnd - 윤영민, BackEnd - 윤영민)
+
+프로젝트 기간 : (2024.08 ~ now)
+
+
+## 목차
+* <a href="#개발도구">개발도구</a>
+* <a href="#프로젝트-소개">프로젝트 소개</a>
+  * <a href="#시나리오">시나리오</a>
+  * <a href="#프로젝트-목표">프로젝트 목표</a>
+  * <a href="#요구사항">요구사항</a>
+* <a href="#이후의-계획">이후의 계획</a>
+
+
+## 개발도구
+* FrontEnd - Vue3 + TypeScript (vite)
+* BackEnd - nextjs
+* Server - docker
+
+## 프로젝트 소개
+> #### 시나리오
+작성중
+
+> #### 프로젝트 목표
+작성중
+
+> #### 요구사항
+작성중
+
+## 이후의 계획
+작성중
