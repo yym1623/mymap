@@ -5,6 +5,12 @@ import App from './App.vue'
 // primevue
 import PrimeVue from 'primevue/config';
 
+// store
+import { createPinia } from 'pinia'
+
+// router
+import router from '@/routers'
+
 
 // primevue css(필수) -> tailwinds 연동할거면 따로 설정 필요
 // primevue css
@@ -19,4 +25,5 @@ createApp(App).use(createNaverMap, {
   clientId: "w2dh3kzqxx", // Required
   category: "ncp", // Optional
   subModules: [], // Optional
-}).use(PrimeVue).directive('tooltip', Tooltip).use(ToastService).mount('#app')
+}).use(PrimeVue).directive('tooltip', Tooltip).use(ToastService)
+.use(createPinia()).use(router).mount('#app')

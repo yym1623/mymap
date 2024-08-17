@@ -7,6 +7,11 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Map: typeof import('./src/components/Map.vue')['default']
     Maps: typeof import('./src/components/maps.vue')['default']
+    Menu: typeof import('./src/components/Menu.vue')['default']
+    Menubox: typeof import('./src/components/menubox.vue')['default']
+    MenuBox: typeof import('./src/components/MenuBox.vue')['default']
+    NaverMap: typeof import('./src/components/NaverMap.vue')['default']
   }
 }
