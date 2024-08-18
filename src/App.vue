@@ -1,17 +1,41 @@
 <script setup lang="ts">
-import Menu from '@/components/Menu.vue'
-import MenuBox from '@/components/MenuBox.vue'
-
-
-
-
+  import Header from '@/components/Header.vue'
+  import Menu from '@/components/Menu.vue'
+  import MenuBox from '@/components/MenuBox.vue'
 </script>
 
+
+
 <template>
-  <Menu></Menu>
-  <MenuBox></MenuBox>
+  <!-- cantainer -->
+  <div class="cantainer">
+    <!-- menu -->
+    <Menu class="menu"></Menu>
+
+    <!-- body -->
+    <div class="body">
+      <Header class="header"></Header>
+      <MenuBox class="menubox"></MenuBox>
+    </div>
+  </div>
 </template>
 
-<style lang="scss" scoped>
 
+
+<style lang="scss">
+.cantainer {
+  .menu {
+  
+  }
+  
+  .body {
+    .header {
+      
+    }
+    .menubox {
+
+    }
+  }
+  
+}
 </style>

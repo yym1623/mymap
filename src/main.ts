@@ -22,7 +22,7 @@ import ToastService from 'primevue/toastservice';
 import Tooltip from 'primevue/tooltip';
 
 createApp(App).use(createNaverMap, {
-  clientId: "w2dh3kzqxx", // Required
+  clientId: import.meta.env.VITE_MAP_CLIENT_ID, // Required
   category: "ncp", // Optional
   subModules: [], // Optional
 }).use(PrimeVue).directive('tooltip', Tooltip).use(ToastService)

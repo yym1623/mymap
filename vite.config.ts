@@ -2,7 +2,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 import Components from 'unplugin-vue-components/vite';
-import {PrimeVueResolver} from '@primevue/auto-import-resolver';
+import { PrimeVueResolver } from '@primevue/auto-import-resolver';
+
+// auto import (vue3)
+import AutoImport from 'unplugin-auto-import/vite'
 
 // 절대 경로 2가지 선택
 // 1. node:url - fileURLToPath
@@ -21,9 +24,12 @@ export default defineConfig({
     Components({
       resolvers: [
         PrimeVueResolver()
-      ]
-    })
 
+      ]
+    }),
+    AutoImport({
+      imports: ['vue']
+    }),
   ],
   resolve: {
     alias: {
