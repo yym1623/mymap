@@ -2,7 +2,7 @@
 ![vue](https://img.shields.io/badge/Vue3-4FC08D)
 ![typescript](https://img.shields.io/badge/typescript-3267a8)
 ![vite](https://img.shields.io/badge/vite-5132a8)
-![nextjs](https://img.shields.io/badge/nextjs-000000)
+![nestjs](https://img.shields.io/badge/nestjs-000000)
 <br />
 모두저장 ([DEMO]())
 
@@ -24,7 +24,7 @@
 
 ## 개발도구
 * FrontEnd - Vue3 + TypeScript (vite)
-* BackEnd - nextjs
+* BackEnd - nestjs
 * Server - docker
 
 ## 프로젝트 소개
