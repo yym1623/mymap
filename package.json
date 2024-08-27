@@ -12,6 +12,7 @@
   "dependencies": {
     "@primevue/themes": "^4.0.0-rc.2",
     "pinia": "^2.2.2",
+    "primeicons": "^7.0.0",
     "primevue": "^3.52.0",
     "sass": "^1.77.8",
     "vue": "^3.4.35",
