@@ -1,25 +1,37 @@
 <script setup lang="ts">
-  import Header from '@/components/Header.vue'
-  import Menu from '@/components/Menu.vue'
-  import MenuBox from '@/components/MenuBox.vue'
+import { ref } from 'vue'
+
+import Header from '@/components/Header.vue'
+import Menu from '@/components/Menu.vue'
+import MenuBox from '@/components/MenuBox.vue'
+
+
+// data
+const fadeIn = ref(false)
+
+// fun
+function fadeInBtn(emitValue : boolean) : void {
+  fadeIn.value = emitValue
+}
 
 </script>
 
 
 
 <template>
-  <!-- cantainer -->
-  <div class="cantainer">
-    <!-- menu -->
-    <div class="left">
-      <div class="title">MyMap</div>
-      <Menu class="menu"></Menu>
-    </div>
-
-    <!-- body -->
-    <div class="right">
-      <Header class="header"></Header>
-      <MenuBox class="menubox"></MenuBox>
+  <div :class="{ fadeIn : fadeIn}">
+    <!-- cantainer -->
+    <div class="cantainer">
+      <!-- menu -->
+      <div class="left">
+        <div class="title">MyMap</div>
+        <Menu class="menu"></Menu>
+      </div>
+      <!-- body -->
+      <div class="right">
+        <Header @fadeInBtn="fadeInBtn" class="header"></Header>
+        <MenuBox class="menubox"></MenuBox>
+      </div>
     </div>
   </div>
 </template>
@@ -27,7 +39,6 @@
 
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Moderustic:wght@300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 * {
   background: #eeeeee;
 }
@@ -60,8 +71,6 @@ body {
     height: 100vh;
     .header {
       display: flex;
-
-      /* justify-content: end; */
       margin-bottom: 2rem;
     }
     .menubox {
@@ -69,6 +78,25 @@ body {
       background: #fff;
     }
   }
-  
+}
+
+/* emit class */
+.fadeIn {
+  .cantainer {
+    padding: 0;
+    .left {
+      display: none;
+    }
+  }
+}
+
+/* media query */
+@media only screen and (max-width: 990px) {
+  .cantainer {
+    padding: 0;
+    .left {
+      display: none;
+    }
+  }
 }
 </style>

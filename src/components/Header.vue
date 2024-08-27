@@ -1,22 +1,68 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import Menu from 'primevue/menu' 
 
-const iconList = ref(['pi pi-search', 'pi pi-bell', 'pi pi-sun', 'pi pi-user']) // primevue icon
-// const iconList = ref(['search', 'notifications', 'wb_sunny', 'person']) // google icon
+// emit
+const emit = defineEmits<{
+  (e: 'fadeInBtn', id: boolean): void
+}>()
+
+
+const iconList = ref(['pi pi-search', 'pi pi-bell', 'pi pi-sun', 'pi pi-user'])
+
+const menu = ref();
+const items = ref([
+  {
+    items: [
+      {
+        label: 'Info',
+        icon: 'pi pi-info-circle'
+      },
+      {
+        label: 'Logout',
+        icon: 'pi pi-sign-out'
+      }
+    ]
+  }
+]);
+
+function toggle(index : number, evnet:object): void {
+  if(index === 3) {
+    // menu.value.toggle(event);
+    console.log(menu.value.toggle(evnet))
+  }
+};
+
+
+
+// data
+const fadeIn = ref(false)
+
+// fun
+function menuFadeInBtn() {
+  fadeIn.value = !fadeIn.value;
+  
+  emit('fadeInBtn', fadeIn.value)
+}
+
+
+
+
 </script>
 
 
 <template>
   <div class="flex">
     <div>
-      <span class="material-symbols-outlined icon-setting">menu</span>
+      <span @click="menuFadeInBtn()" class="material-symbols-outlined icon-setting">menu</span>
     </div>
     <ui class="topbar-items">
-      <li v-for="icon in iconList" :key="icon" class="icon-setting">
-        <div :class="icon" ></div>
+      <li v-for="(icon, index) in iconList" :key="icon">
+        <div :class="icon" @click="toggle(index, $event)" class="icon-setting"></div>
         <!-- <span class="material-symbols-outlined">{{ icon }}</span> -->
       </li>
     </ui>
+    <Menu ref="menu" id="overlay_menu" class="user-icon-setting" :model="items" :popup="true" />
   </div>
 </template>
 
@@ -24,21 +70,16 @@ const iconList = ref(['pi pi-search', 'pi pi-bell', 'pi pi-sun', 'pi pi-user']) 
 <style lang="scss" scoped>
 .icon-setting {
   cursor: pointer;
-  /* &:hover {
-    background: #333;
-    color: #fff;
-    border-radius: 5px;
-    box-sizing: border-box;
-  } */
 }
 
 .flex {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   .topbar-items {
     display: flex;
     list-style-type: none;
-    gap: 1rem;
+    gap: 1.5rem;
     &:last-child {
       margin-right: 1rem;
     }

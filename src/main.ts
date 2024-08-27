@@ -4,12 +4,16 @@ import App from './App.vue'
 
 // primevue
 import PrimeVue from 'primevue/config';
-
+// import Aura from '@primevue/themes/aura';
 // store
 import { createPinia } from 'pinia'
 
 // router
 import router from '@/routers'
+
+
+// font
+import '@/scss/font.scss'
 
 
 // primevue css(필수) -> tailwinds 연동할거면 따로 설정 필요

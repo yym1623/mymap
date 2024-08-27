@@ -5,8 +5,8 @@
 
 
 <template>
-  <div class="card">
-    menubox
+  <div>
+    
   </div>
 </template>
 
