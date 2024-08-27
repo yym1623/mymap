@@ -44,10 +44,6 @@ function menuFadeInBtn() {
   
   emit('fadeInBtn', fadeIn.value)
 }
-
-
-
-
 </script>
 
 

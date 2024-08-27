@@ -1,14 +1,17 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-// import HomeView from '@/components/HomeView.vue'
-// import AboutView from '@/components/AboutView.vue'
+import DashBoard from '@/components/DashBoard.vue'
+import Map from '@/components/Map.vue'
+import Calendar from '@/components/Calendar.vue'
 
 
 const router = createRouter({
   history: createWebHistory(),
 
   routes: [
-    // { path: '/', component: HomeView },
+    { path: '/', component: DashBoard },
+    { path: '/Map', component: Map },
+    { path: '/Calendar', component: Calendar },
     // { path: '/about/:id', component: AboutView },
   ],
 
