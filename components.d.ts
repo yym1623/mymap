@@ -7,12 +7,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Calendar: typeof import('./src/components/Calendar.vue')['default']
+    Breadcrumb: typeof import('primevue/breadcrumb')['default']
+    Calendar: typeof import('./src/components/Apps/Calendar.vue')['default']
     DashBoard: typeof import('./src/components/DashBoard.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
-    Map: typeof import('./src/components/Map.vue')['default']
+    Map: typeof import('./src/components/Apps/Map.vue')['default']
     Maps: typeof import('./src/components/maps.vue')['default']
     Menu: typeof import('./src/components/Menu.vue')['default']
     Menubox: typeof import('./src/components/menubox.vue')['default']
@@ -21,5 +22,8 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('primevue/select')['default']
+  }
+  export interface ComponentCustomProperties {
+    Ripple: typeof import('primevue/ripple')['default']
   }
 }

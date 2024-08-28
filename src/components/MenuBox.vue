@@ -5,14 +5,12 @@
 
 
 <template>
-  <div>
-
-  </div>
+  <RouterView class="monubox"></RouterView>
 </template>
 
 
 <style lang="scss" scoped>
-* {
+.menubox {
   height: 100vh;
   padding: 16px;
 }

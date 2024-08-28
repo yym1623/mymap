@@ -9,7 +9,8 @@ const items = ref([
     items: [
       {
         label: 'Dashboards',
-        icon: 'pi pi-home'
+        icon: 'pi pi-home',
+        path: '/'
       },
     ]
   },
@@ -18,21 +19,33 @@ const items = ref([
     items: [
       {
         label: 'Map',
-        icon: 'pi pi-map'
+        icon: 'pi pi-map',
+        path: '/Apps/Map'
       },
       {
         label: 'Calendar',
-        icon: 'pi pi-calendar'
+        icon: 'pi pi-calendar',
+        path: '/Apps/Calendar'
       },
     ]
   }
 ]);
 
+
 </script>
 
 
 <template>
-  <Menu :model="items" />
+  <Menu :model="items">
+    <template #item="{ item, props }">
+        <router-link  v-slot="{ href, navigate }" :to="item.path" custom>
+            <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+              <span :class="item.icon"></span>
+              <span style="margin-left: 10px;">{{ item.label }}</span>
+            </a>
+        </router-link>
+      </template>
+  </Menu>
 </template>
 
 

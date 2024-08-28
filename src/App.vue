@@ -9,7 +9,7 @@ import MenuBox from '@/components/MenuBox.vue'
 // data
 const fadeIn = ref(false)
 
-// fun
+// func
 function fadeInBtn(emitValue : boolean) : void {
   fadeIn.value = emitValue
 }
@@ -19,8 +19,7 @@ function fadeInBtn(emitValue : boolean) : void {
 
 
 <template>
-  <div :class="{ fadeIn : fadeIn}">
-    <!-- cantainer -->
+  <div :class="{fadeIn : fadeIn}">
     <div class="cantainer">
       <!-- menu -->
       <div class="left">
@@ -39,19 +38,23 @@ function fadeInBtn(emitValue : boolean) : void {
 
 
 <style lang="scss">
-* {
-  background: #eeeeee;
-}
 body {
   margin: 0;
   padding: 0;
 }
 .cantainer {
+  background: #f1f5f9;
+  min-width: 550px;
+  width: 100%;
   height: 100vh;
-  padding: 0 1.5rem;
   display: flex;
   .left { 
     max-width: 300px;
+    padding: 0 1.5rem;
+    background: #fff;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: 0px 4px 30px rgba(221, 224, 255, .54);
+    border-radius: 12px;
     .title {
       font-family: "Kanit", sans-serif;
       padding: 15px;
@@ -74,19 +77,19 @@ body {
       margin-bottom: 2rem;
     }
     .menubox {
-      border-radius: 10px;
       background: #fff;
+      border: 1px solid #e2e8f0;
+      padding: 2rem;
+      box-shadow: 0px 4px 30px rgba(221, 224, 255, .54);
+      border-radius: 12px;
     }
   }
 }
 
 /* emit class */
 .fadeIn {
-  .cantainer {
-    padding: 0;
-    .left {
-      display: none;
-    }
+  .left {
+    display: none;
   }
 }
 

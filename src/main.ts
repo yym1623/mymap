@@ -4,7 +4,10 @@ import App from './App.vue'
 
 // primevue
 import PrimeVue from 'primevue/config';
-// import Aura from '@primevue/themes/aura';
+
+import Aura from '@primevue/themes/aura';
+
+
 // store
 import { createPinia } from 'pinia'
 
@@ -30,5 +33,15 @@ createApp(App).use(createNaverMap, {
   clientId: import.meta.env.VITE_MAP_CLIENT_ID, // Required
   category: "ncp", // Optional
   subModules: [], // Optional
-}).use(PrimeVue).directive('tooltip', Tooltip).use(ToastService)
+}).use(PrimeVue, {
+  theme: {
+    preset: Aura,
+    options: {
+      cssLayer: {
+        name: 'primevue',
+        order: 'tailwind-base, primevue, tailwind-utilities'
+      }
+    }
+  }
+}).directive('tooltip', Tooltip).use(ToastService)
 .use(createPinia()).use(router).mount('#app')
