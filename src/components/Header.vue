@@ -62,8 +62,11 @@ watch(route, (val) => {
 
 // fun
 function menuFadeInBtn() {
-  fadeIn.value = !fadeIn.value;
-  
+  if(window.innerWidth > 990) {
+    fadeIn.value = !fadeIn.value;  
+  } else {
+    fadeIn.value = false
+  }
   emit('fadeInBtn', fadeIn.value)
 }
 
@@ -88,20 +91,12 @@ function toggle(index : number, evnet:object): void {
       <span @click="menuFadeInBtn()" class="material-symbols-outlined icon-setting">menu</span>
 
       <!-- 하나면 home만으로 -> 두개부턴 :model로 배열로해서 여러개 넣는다 -> 지금은 하나만 들어오니 이렇게 한다 -->
+      <!-- 라우터 이동도 삭제 -->
       <Breadcrumb class="breadcrumb" :home="page">
           <template #item="{ item, props }">
-              <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-                  <a :href="href" v-bind="props.action" @click="navigate">
-                      <!-- <span :class="[item.icon, 'text-color']" /> -->
-                      <span style="color:#000">{{ item.label }}</span>
-                  </a>
-              </router-link>
-              <a v-else :href="item.url" :target="item.target" v-bind="props.action">
-                <span class="text-surface-700 dark:text-surface-0">{{ item.label }}</span>
-              </a>
+            <span style="color:#000">{{ item.label }}</span>
           </template>
       </Breadcrumb>
-      
     </div>
     <ui class="topbar-items">
       <li v-for="(icon, index) in iconList" :key="icon">
