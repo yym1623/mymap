@@ -8,8 +8,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('primevue/breadcrumb')['default']
+    Button: typeof import('primevue/button')['default']
     Calendar: typeof import('./src/components/Apps/Calendar.vue')['default']
+    Chart: typeof import('primevue/chart')['default']
     DashBoard: typeof import('./src/components/DashBoard.vue')['default']
+    DataView: typeof import('primevue/dataview')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
@@ -22,6 +25,8 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('primevue/select')['default']
+    SelectButton: typeof import('primevue/selectbutton')['default']
+    Tag: typeof import('primevue/tag')['default']
   }
   export interface ComponentCustomProperties {
     Ripple: typeof import('primevue/ripple')['default']

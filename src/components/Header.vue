@@ -116,19 +116,18 @@ function toggle(index : number, evnet:object): void {
   cursor: pointer;
 }
 
-.flex {
-  display: flex;
-  align-items: center;
-}
-
 .container {
-  .breadcrumb {
-    margin-left: 20px;
-    background: #f1f5f9;
-  }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .flex {
+    display: flex;
+    align-items: center;
+    .breadcrumb {
+      margin-left: 20px;
+      background: #f1f5f9;
+    }
+  }
   .topbar-items {
     display: flex;
     list-style-type: none;

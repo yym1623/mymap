@@ -30,7 +30,12 @@ function fadeInBtn(emitValue : boolean) : void {
 
 
 
-onClickOutside(menuDom, event => fadeIn.value = true)
+onClickOutside(menuDom, event => {
+  if(fadeInCheck.value) {
+    fadeIn.value = true
+  }
+  
+})
 
 
 // 윈도우 너비 업데이트 함수
@@ -87,7 +92,7 @@ body {
   width: 100%;
   /* height: 100vh; */
   display: flex;
-  .left { 
+  .left {
     max-width: 300px;
     padding: 0 1.5rem;
     background: #fff;
@@ -115,9 +120,9 @@ body {
       margin-bottom: 2rem;
     }
     .menubox {
+      padding: 2rem;
       background: #fff;
       border: 1px solid #e2e8f0;
-      padding: 2rem;
       box-shadow: 0px 4px 30px rgba(221, 224, 255, .54);
       border-radius: 12px;
     }
@@ -140,7 +145,6 @@ body {
 }
 
 /* media query */
-  
 /* moblic */
 @media only screen and (max-width: 990px) {
   .left {

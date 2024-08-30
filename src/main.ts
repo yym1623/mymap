@@ -1,12 +1,12 @@
 import { createApp } from 'vue'
-import { createNaverMap } from "vue3-naver-maps";
 import App from './App.vue'
+
+// naver map
+import { createNaverMap } from "vue3-naver-maps";
 
 // primevue
 import PrimeVue from 'primevue/config';
-
-import Aura from '@primevue/themes/aura';
-
+// import Aura from '@primevue/themes/aura';
 
 // store
 import { createPinia } from 'pinia'
@@ -14,14 +14,15 @@ import { createPinia } from 'pinia'
 // router
 import router from '@/routers'
 
-
-// font
+// css
 import '@/scss/font.scss'
+// import '@/scss/tailwind.scss'
 
 
 // primevue css(필수) -> tailwinds 연동할거면 따로 설정 필요
 // primevue css
-import 'primevue/resources/themes/aura-light-green/theme.css';
+// 3버전 기준 템플릿 (4버전의 aura theme 가져오는 방법 확보 후 4버전으로 변경해서 진행 (theme template자체가 4버전부터 나옴 -> primevue4랑 쓰는거 -> 일단 3으로))
+import 'primevue/resources/themes/aura-light-green/theme.css' 
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css'
 
@@ -29,19 +30,14 @@ import 'primeicons/primeicons.css'
 import ToastService from 'primevue/toastservice';
 import Tooltip from 'primevue/tooltip';
 
-createApp(App).use(createNaverMap, {
+
+createApp(App).use(createNaverMap, {  
   clientId: import.meta.env.VITE_MAP_CLIENT_ID, // Required
   category: "ncp", // Optional
   subModules: [], // Optional
 }).use(PrimeVue, {
-  theme: {
-    preset: Aura,
-    options: {
-      cssLayer: {
-        name: 'primevue',
-        order: 'tailwind-base, primevue, tailwind-utilities'
-      }
-    }
-  }
+//   theme: {
+//     preset: Aura
+// }
 }).directive('tooltip', Tooltip).use(ToastService)
 .use(createPinia()).use(router).mount('#app')
