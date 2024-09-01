@@ -6,7 +6,6 @@ import { createNaverMap } from "vue3-naver-maps";
 
 // primevue
 import PrimeVue from 'primevue/config';
-// import Aura from '@primevue/themes/aura';
 
 // store
 import { createPinia } from 'pinia'
@@ -16,7 +15,7 @@ import router from '@/routers'
 
 // css
 import '@/scss/font.scss'
-// import '@/scss/tailwind.scss'
+import '@/scss/tailwind.scss'
 
 
 // primevue css(필수) -> tailwinds 연동할거면 따로 설정 필요
@@ -25,6 +24,7 @@ import '@/scss/font.scss'
 import 'primevue/resources/themes/aura-light-green/theme.css' 
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css'
+import "primeflex/primeflex.css";
 
 // primevue plugin (따로 등록해야함? prmevue 하나로 다 사용이 아니라 -> 등록할것도 있는거같음 -> 등록하니까 됨 -> 기본 primevue말고 해당 플러그인들은 따로 해야하는게 있나봄)
 import ToastService from 'primevue/toastservice';
@@ -36,8 +36,6 @@ createApp(App).use(createNaverMap, {
   category: "ncp", // Optional
   subModules: [], // Optional
 }).use(PrimeVue, {
-//   theme: {
-//     preset: Aura
-// }
+  // options
 }).directive('tooltip', Tooltip).use(ToastService)
 .use(createPinia()).use(router).mount('#app')

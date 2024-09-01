@@ -136,29 +136,6 @@ const setChartOptions = (type : string) =>  {
       <div class="grid-item box-item">
         <Chart type="pie" :data="chartData2" class="height-100" :options="chartOptions2" />
       </div>
-
-      <!-- <div class="grid-item box-item">
-        <DataView :value="products">
-          <template #list="slotProps">
-            <div class="flex flex-col">
-                <div v-for="(item, index) in slotProps.items" :key="index">
-                  <div class="flex flex-col gap-4 p-6 sm:flex-row sm:items-center" :class="{ 'border-t border-surface-200 dark:border-surface-700': index !== 0 }">
-                    <div class="relative md:w-40">
-                        <img class="block w-full mx-auto rounded img-size xl:block" src="https://www.viewhotels.jp/asakusa-annex/wp-content/uploads/sites/6/2020/03/test-img.jpg" :alt="item.name" />
-                    </div>
-                    <div class="flex flex-col justify-between flex-1 gap-6 md:flex-row md:items-center">
-                      <div class="flex flex-row items-start justify-between gap-2 md:flex-col">
-                        <div style="text-align: center">
-                          <span>상세설명</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </template>
-        </DataView>
-      </div> -->
     </div>
 
   </div>

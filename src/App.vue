@@ -62,6 +62,7 @@ onUnmounted(() => {
 
 
 <template>
+  <ThemeSwitcher />
   <div :class="{ fadeInPc : fadeIn, fadeMoblie : fadeInCheck && !fadeIn }">
     <div class="cantainer">
       <!-- menu -->

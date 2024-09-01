@@ -28,6 +28,11 @@ const items = ref([
         icon: 'pi pi-calendar',
         path: '/Apps/Calendar'
       },
+      {
+        label: 'Cart',
+        icon: 'pi pi-bookmark',
+        path: '/Apps/Cart'
+      }
     ]
   }
 ]);
@@ -40,7 +45,7 @@ const items = ref([
   <Menu :model="items">
     <template #item="{ item, props }">
         <router-link  v-slot="{ href, navigate }" :to="item.path" custom>
-            <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+            <a :href="href" v-bind="props.action" @click="navigate">
               <span :class="item.icon"></span>
               <span style="margin-left: 10px;">{{ item.label }}</span>
             </a>

@@ -88,7 +88,7 @@ function toggle(index : number, evnet:object): void {
 <template>
   <div class="container">
     <div class="flex">
-      <span @click="menuFadeInBtn()" class="material-symbols-outlined icon-setting">menu</span>
+      <div  @click="menuFadeInBtn()" class="icon-setting pi pi-bars"></div>
 
       <!-- 하나면 home만으로 -> 두개부턴 :model로 배열로해서 여러개 넣는다 -> 지금은 하나만 들어오니 이렇게 한다 -->
       <!-- 라우터 이동도 삭제 -->

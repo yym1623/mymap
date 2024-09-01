@@ -10,6 +10,7 @@ declare module 'vue' {
     Breadcrumb: typeof import('primevue/breadcrumb')['default']
     Button: typeof import('primevue/button')['default']
     Calendar: typeof import('./src/components/Apps/Calendar.vue')['default']
+    Cart: typeof import('./src/components/Apps/Cart.vue')['default']
     Chart: typeof import('primevue/chart')['default']
     DashBoard: typeof import('./src/components/DashBoard.vue')['default']
     DataView: typeof import('primevue/dataview')['default']
@@ -27,8 +28,11 @@ declare module 'vue' {
     Select: typeof import('primevue/select')['default']
     SelectButton: typeof import('primevue/selectbutton')['default']
     Tag: typeof import('primevue/tag')['default']
+    ThemeSwitch: typeof import('./src/components/ThemeSwitch.vue')['default']
+    ToggleSwitch: typeof import('primevue/toggleswitch')['default']
   }
   export interface ComponentCustomProperties {
     Ripple: typeof import('primevue/ripple')['default']
+    StyleClass: typeof import('primevue/styleclass')['default']
   }
 }
