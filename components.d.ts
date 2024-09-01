@@ -14,6 +14,7 @@ declare module 'vue' {
     Chart: typeof import('primevue/chart')['default']
     DashBoard: typeof import('./src/components/DashBoard.vue')['default']
     DataView: typeof import('primevue/dataview')['default']
+    Dropdown: typeof import('primevue/dropdown')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
