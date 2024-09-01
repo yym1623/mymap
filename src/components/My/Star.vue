@@ -1,11 +1,12 @@
 <script setup lang="ts">
-// import Map from '@/components/Map.vue'
 
 </script>
 
 
 <template>
-  <RouterView class="monubox"></RouterView>
+  <div>
+    
+  </div>
 </template>
 
 

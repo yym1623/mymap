@@ -82,6 +82,12 @@ onUnmounted(() => {
 
 
 <style lang="scss">
+/* primevue components class */
+.p-submenu-header {
+  background: #f1f5f9;
+}
+
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -133,11 +139,11 @@ body {
       margin-bottom: 2rem;
     }
     .menubox {
-      padding: 2rem;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0px 4px 30px rgba(221, 224, 255, .54);
-      border-radius: 12px;
+      /* padding: 2rem; */
+      /* background: #fff; */
+      /* border: 1px solid #e2e8f0; */
+      /* box-shadow: 0px 4px 30px rgba(221, 224, 255, .54); */
+      /* border-radius: 12px; */
     }
   }
 }
@@ -145,28 +151,40 @@ body {
 /* emit class */
 .fadeInPc {
   .left {
-    display: none;
-  }
-}
-
-.fadeMoblie {
-  .left {
-    display: block;
-    position: fixed;
-    z-index: 10;
-  }
-}
-
-/* media query */
-/* moblic */
-@media only screen and (max-width: 990px) {
-  .left {
     /* display: none; */
     transform: translate(-100%);
     transition: transform 0.2s;
   }
   .right {
-    margin-left: 2rem !important;
+    margin-left: 2rem;
+  }
+}
+
+.fadeMoblie {
+  .cantainer {
+    .left {
+      transform: translate(0%);
+      z-index: 10;
+      height: 100vh; // test
+      background: #f1f5f9;
+    }
+    .right {
+      margin-left: 20rem;
+    }
+  }
+}
+
+/* media query */
+@media only screen and (max-width: 990px) {
+  .cantainer {
+    .left {
+      /* display: none; */
+      transform: translate(-100%);
+      transition: transform 0.2s;
+    }
+    .right {
+      margin-left: 2rem !important;
+    }
   }
 }
 </style>

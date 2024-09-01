@@ -1,7 +1,7 @@
 
 <template>
-  <div class="card-container">
-    <DataView :value="products" :layout="layout" paginator :rows="4">
+  <div class="card-container box-item">
+    <DataView :value="products" :layout="layout" paginator :rows="4" :sortOrder="sortOrder" :sortField="sortField">
       <template #header>
         <div class="flex justify-content-between">
           <Dropdown v-model="sortKey" :options="sortOptions" optionLabel="label" placeholder="Sort By Price" @change="onSortChange($event)" />
@@ -86,10 +86,33 @@ const products = ref();
 const layout = ref('grid')
 // const layout = ref<'grid' | 'list' | undefined>('grid');
 
+
+// data view sort
+const sortOrder = ref();
+const sortField = ref();
+const sortKey = ref();
+const sortOptions = ref([
+    {label: 'Price High to Low', value: '!price'},
+    {label: 'Price Low to High', value: 'price'},
+]);
+
+const onSortChange = (event) => {
+  const value = event.value.value;
+  const sortValue = event.value;
+
+  if (value.indexOf('!') === 0) {
+    sortOrder.value = -1;
+    sortField.value = value.substring(1, value.length);
+    sortKey.value = sortValue;
+  } else {
+    sortOrder.value = 1;
+    sortField.value = value;
+    sortKey.value = sortValue;
+  }
+};
 </script>
 
 
 <style lang="scss" scoped>
-
 
 </style>

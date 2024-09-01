@@ -1,9 +1,16 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
+// dashboard
 import DashBoard from '@/components/DashBoard.vue'
+// apps
 import Map from '@/components/Apps/Map.vue'
 import Calendar from '@/components/Apps/Calendar.vue'
-import Cart from '@/components/Apps/Cart.vue'
+import Msg from '@/components/Apps/Msg.vue'
+
+// user
+import Star from '@/components/My/Star.vue'
+import Cart from '@/components/My/Cart.vue'
+import Info from '@/components/My/Info.vue'
 
 
 const router = createRouter({
@@ -13,7 +20,11 @@ const router = createRouter({
     { path: '/', component: DashBoard, name: 'DashBoard' },
     { path: '/Apps/Map', component: Map, name: 'Apps / Map' },
     { path: '/Apps/Calendar', component: Calendar, name: 'Apps / Calendar' },
-    { path: '/Apps/Cart', component: Cart, name: 'Apps / Cart' },
+    { path: '/Apps/Msg', component: Msg, name: 'Apps / Msg' },
+
+    { path: '/My/Star', component: Star, name: 'My / Star' },
+    { path: '/My/Cart', component: Cart, name: 'My / Cart' },
+    { path: '/My/Info', component: Info, name: 'My / Info' },
     // { path: '/about/:id', component: AboutView },
   ],
 

@@ -16,7 +16,7 @@ import router from '@/routers'
 // css
 import '@/scss/font.scss'
 import '@/scss/tailwind.scss'
-
+import '@/scss/index.scss'
 
 // primevue css(필수) -> tailwinds 연동할거면 따로 설정 필요
 // primevue css

@@ -29,9 +29,29 @@ const items = ref([
         path: '/Apps/Calendar'
       },
       {
-        label: 'Cart',
+        label: 'Msg',
+        icon: 'pi pi-comment',
+        path: '/Apps/Msg'
+      }
+    ]
+  },
+  {
+    label: 'My',
+    items: [
+      {
+        label: 'Star',
         icon: 'pi pi-bookmark',
-        path: '/Apps/Cart'
+        path: '/My/Star'
+      },  
+      {
+        label: 'Cart',
+        icon: 'pi pi-shopping-cart',
+        path: '/My/Cart'
+      },
+      {
+        label: 'Info',
+        icon: 'pi pi-user',
+        path: '/My/Info'
       }
     ]
   }
