@@ -125,7 +125,8 @@ function toggle(index : number, evnet:object): void {
     align-items: center;
     .breadcrumb {
       margin-left: 20px;
-      background: #f1f5f9;
+      /* background: #f1f5f9; */
+      background: #fff;
     }
   }
   .topbar-items {

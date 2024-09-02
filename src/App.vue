@@ -84,7 +84,8 @@ onUnmounted(() => {
 <style lang="scss">
 /* primevue components class */
 .p-submenu-header {
-  background: #f1f5f9;
+  /* background: #f1f5f9; */
+  background: #fff;
 }
 
 
@@ -96,7 +97,8 @@ body {
 
 .cantainer {
   font-family: "Poppins", sans-serif;
-  background: #f1f5f9;
+  /* background: #f1f5f9; */
+  background: #fff;
   width: 100%;
   min-height: 100vh;
   /* height: 100vh; -> data가 있을 경우 100%가 화면에 맞고 없는 경우 100vh로 전체화면 보는건데 데이터가 있고 없음마다 변할 수 있으니 min-hieght로 100vh해야한다 -> 있을 경우는 아니고 최소 100vh 전체화면이니 딱 맞는다(데이터 있고 없음에 대해서) */
@@ -120,7 +122,8 @@ body {
       font-size: 35px;
     }
     .menu {
-      background: #f1f5f9;
+      /* background: #f1f5f9; */
+      background: #fff;
 
       font-size: 12px;
       margin-top: 1rem;
@@ -166,7 +169,8 @@ body {
       transform: translate(0%);
       z-index: 10;
       height: 100vh; // test
-      background: #f1f5f9;
+      /* background: #f1f5f9; */
+      background: #fff;
     }
     .right {
       margin-left: 20rem;

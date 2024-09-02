@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 import { ProductService } from '@/modules/ProductService';
 
 
 onMounted(() => {
-  chartData1.value = setChartData('left');
-  chartData2.value = setChartData('right');
-  chartOptions1.value = setChartOptions('left');
-  chartOptions2.value = setChartOptions('right');
+  chartData.value = setChartData();
+  chartOptions.value = setChartOptions();
 
   ProductService.getProducts().then((data) => (products.value = data));
 });
@@ -18,10 +16,8 @@ onMounted(() => {
 // data
 const products = ref();
 
-const chartData1 = ref();
-const chartData2 = ref();
-const chartOptions1 = ref();
-const chartOptions2 = ref();
+const chartData = ref();
+const chartOptions = ref();
 
 const router = useRouter()
 
@@ -50,12 +46,40 @@ const responsiveOptions = ref([
   }
 ]);
 
-// history data
-const events = ref([
-  { status: '제목1', date: '2024/00/00', icon: 'pi pi-shopping-cart', color: '#9C27B0'},
-  { status: '제목2', date: '2024/00/00', icon: 'pi pi-cog', color: '#673AB7' },
-  { status: '제목3', date: '2024/00/00', icon: 'pi pi-shopping-cart', color: '#FF9800' },
-  { status: '제목4', date: '2024/00/00', icon: 'pi pi-check', color: '#607D8B' },
+
+
+// tabs data
+const tabs = ref([
+    { 
+      title: 'Unshipped Cart', 
+      content: [
+        {
+          cardTitle: '신규등록1',
+          CardContent: '신규설명1'
+        },
+        {
+          cardTitle: '신규등록2',
+          CardContent: '신규설명2'
+        },
+        {
+          cardTitle: '신규등록2',
+          CardContent: '신규설명2'
+        },
+        {
+          cardTitle: '신규등록2',
+          CardContent: '신규설명2'
+        },
+      ]
+    },
+    { 
+      title: 'Unshipped message', 
+      content: [
+        {
+          cardTitle: '신규메세지1',
+          CardContent: '신규메세지1'
+        }
+      ]
+    },
 ]);
 
 // func
@@ -63,100 +87,74 @@ function saveMapRouter(name : string) : void {
   router.push({ name })
 
 }
-const setChartData = (type : string) =>  {
+const setChartData = () =>  {
   const documentStyle = getComputedStyle(document.documentElement);
 
-  if(type === 'left') {
     return {
-      labels: ['January', 'February', 'March', 'April'],
+      labels: [1,2,3,4,5,6,7,8,9,10],
       datasets: [
         {
           type: 'bar',
           label: 'Dataset 1',
           backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-          data: [50, 25, 12, 48, 90, 76, 42]
+          data: [50, 25, 12, 48, 90, 76, 42, 55, 33, 65]
         },
         {
           type: 'bar',
           label: 'Dataset 2',
           backgroundColor: documentStyle.getPropertyValue('--p-gray-500'),
-          data: [21, 84, 24, 75, 37, 65, 34]
+          data: [21, 84, 24, 75, 37, 65, 34, 11, 43, 54]
         },
         {
           type: 'bar',
           label: 'Dataset 3',
           backgroundColor: documentStyle.getPropertyValue('--p-orange-500'),
-          data: [41, 52, 24, 74, 23, 21, 32]
+          data: [41, 52, 24, 74, 23, 21, 32, 43, 55, 12]
         }
       ]
     };
-  } else {
-    return {
-      labels: ['A', 'B', 'C'],
-      datasets: [
-        {
-          data: [540, 325, 702],
-          backgroundColor: [documentStyle.getPropertyValue('--cyan-500'), documentStyle.getPropertyValue('--orange-500'), documentStyle.getPropertyValue('--gray-500')],
-          hoverBackgroundColor: [documentStyle.getPropertyValue('--cyan-400'), documentStyle.getPropertyValue('--orange-400'), documentStyle.getPropertyValue('--gray-400')]
-        }
-      ]
-    }
-  }
 };
-const setChartOptions = (type : string) =>  {
+const setChartOptions = () =>  {
   const documentStyle = getComputedStyle(document.documentElement);
   const textColor = documentStyle.getPropertyValue('--p-text-color');
   const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color');
   const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
 
-  if(type === 'left') {
-    return {
-      maintainAspectRatio: false,
-      aspectRatio: 0.8,
-      plugins: {
-        tooltips: {
-          mode: 'index',
-          intersect: false
+  return {
+    maintainAspectRatio: false,
+    aspectRatio: 0.8,
+    plugins: {
+      tooltips: {
+        mode: 'index',
+        intersect: false
+      },
+      legend: {
+        labels: {
+          color: textColor
+        }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true,
+        ticks: {
+          color: textColorSecondary
         },
-        legend: {
-          labels: {
-            color: textColor
-          }
+        grid: {
+          color: surfaceBorder
         }
       },
-      scales: {
-        x: {
-          stacked: true,
-          ticks: {
-            color: textColorSecondary
-          },
-          grid: {
-            color: surfaceBorder
-          }
+      y: {
+        stacked: true,
+        ticks: {
+          color: textColorSecondary
         },
-        y: {
-          stacked: true,
-          ticks: {
-            color: textColorSecondary
-          },
-          grid: {
-            color: surfaceBorder
-          }
+        grid: {
+          color: surfaceBorder
         }
       }
-    };
-  } else {
-    return {
-      plugins: {
-        legend: {
-          labels: {
-            usePointStyle: true,
-            color: textColor
-          }
-        }
-      }
-    };
-  }
+    }
+  };
 }
 
 
@@ -208,27 +206,41 @@ const setChartOptions = (type : string) =>  {
       <!-- item - graph -->
       <div class="grid-item box-item">
         <div class="header-item">Chart Over View</div>
-        <Chart type="bar" class="height-20rem" :data="chartData1" :options="chartOptions1" />
+        <Chart type="bar" class="height-20rem" :data="chartData" :options="chartOptions" />
       </div>
   
-      <!-- item history -->
-      <div class="grid-item box-item">
-        <div class="header-item">History over view</div>
-        <Timeline class="flex justify-content-center align-items-center height-100 history" :value="events">
-          <template #opposite="slotProps">
-            <small class="text-surface-500 dark:text-surface-400">{{slotProps.item.date}}</small>
-          </template>
-          <template  #content="slotProps">
-            <div class="cursor-pointer" @click="saveMapRouter('Apps / Cart')">{{slotProps.item.status}}</div>
-          </template>
-        </Timeline>
+      <!-- item tab -->
+      <div class="grid-item">
+        <div class="row-grid">
+          <div class="box-item second-grid">
+            <div class="header-item">Waiting Actions</div>
+            <TabView>
+              <TabPanel v-for="tab in tabs" :key="tab.title" :header="tab.title">
+                <ScrollPanel Panel style="height: 250px">
+                  <div class="card-style" v-for="item in tab.content" :key="item.cardTitle">
+                    <div class="card-title">{{ item.cardTitle }}</div>
+                    <div class="card-content">{{ item.CardContent }}</div>
+                  </div>
+                </ScrollPanel>
+              </TabPanel>
+            </TabView>
+          </div>
+          <div class="box-item second-grid">
+            <div class="header-item">Waiting Actions</div>
+            <TabView>
+              <TabPanel v-for="tab in tabs" :key="tab.title" :header="tab.title">
+                <ScrollPanel Panel style="height: 250px">
+                  <div class="card-style" v-for="item in tab.content" :key="item.cardTitle">
+                    <div class="card-title">{{ item.cardTitle }}</div>
+                    <div class="card-content">{{ item.CardContent }}</div>
+                  </div>
+                </ScrollPanel>
+              </TabPanel>
+            </TabView>
+          </div>
+        </div>
       </div>
-
-      <!-- item - graph -->
-      <!-- <div class="grid-item box-item">
-        <Chart type="pie" :data="chartData2" class="height-100" :options="chartOptions2" />
-      </div> -->
-
+      
       <!-- item scroll -->
       <div class="grid-item box-item">
         <div class="header-item">Scroll over view</div>
@@ -256,17 +268,9 @@ const setChartOptions = (type : string) =>  {
 
 
 <style lang="scss" scoped>
-/* 전역 */
-.height-100 {
-  height: 100%;
+* {
+  font-size: 13px;
 }
-.height-20rem {
-  height: 20rem;
-}
-.img-size {
-  width: 100%;
-}
-
 
 
 .dashboard-container {
@@ -278,32 +282,79 @@ const setChartOptions = (type : string) =>  {
     .grid-item {
       &:nth-child(1) {
         grid-column: span 3 / span 3;
+        .box-item {
+          padding: 0;
+        }
       }
       &:nth-child(2) {
         grid-column: span 3 / span 3;
+        .box-item {
+          padding: 0;
+        }
       }
       &:nth-child(3) {
         grid-column: span 3 / span 3;
+        .box-item {
+          padding: 0;
+        }
       }
       &:nth-child(4) {
         grid-column: span 3 / span 3;
+        .box-item {
+          padding: 0;
+        }
       }
       &:nth-child(5) {
         grid-column: span 8 / span 8;
       }
       &:nth-child(6) {
         grid-column: span 4 / span 4;
+        .row-grid {
+          display: grid;
+          grid-template-columns: repeat(12, minmax(0, 1fr));
+          gap: 1rem;
+          .second-grid {
+            grid-column: span 12 / span 12;
+          }
+        }
+
+        .card-style {
+          margin-bottom: .5rem;
+          border-radius: 5px;
+          background: #ecfdf5;
+          padding: 1rem;
+          .card-title {
+            font-size: 14px;
+          }
+          .card-content {
+            font-size: 12px;
+            margin-top: 1rem;
+            color: #94a3b8
+          }
+        }
       }
       &:nth-child(7) {
         grid-column: span 12 / span 12;
       }
-      .history {
-        padding-bottom: 1rem;
+      
+
+      /* 전역 */
+      // -> 나중엔 전역들을 따로 스타일로 빼고 -> 현 파일에선 scoped로 일단 사용했지만 내부 ui framwork 요소에 style 입힐려면 scoped 해제로 적용이 가능하여 일단 전역이 아닌 해당 특정요소 안쪽으로 넣어서 중첩되지 않게 만든다
+      .height-100 {
+        height: 100%;
+      }
+      .height-20rem {
+        height: 44rem;
+      }
+      .img-size {
+        width: 100%;
+      }
+      .header-item {
+        margin-bottom: .5rem;
       }
     }
   }
 }
-
 
 /* media query */
 @media only screen and (max-width: 767px) {
@@ -311,17 +362,26 @@ const setChartOptions = (type : string) =>  {
     .grid {
       .grid-item {
         &:nth-child(1) {
-        grid-column: span 12 / span 12;
-      }
-      &:nth-child(2) {
-        grid-column: span 12 / span 12;
-      }
-      &:nth-child(3) {
-        grid-column: span 12 / span 12;
-      }
-      &:nth-child(4) {
-        grid-column: span 12 / span 12;
-      }
+          grid-column: span 12 / span 12;
+        }
+        &:nth-child(2) {
+          grid-column: span 12 / span 12;
+        }
+        &:nth-child(3) {
+          grid-column: span 12 / span 12;
+        }
+        &:nth-child(4) {
+          grid-column: span 12 / span 12;
+        }
+        &:nth-child(5) {
+          grid-column: span 12 / span 12;
+        }
+        &:nth-child(6) {
+          grid-column: span 12 / span 12;
+        }
+        &:nth-child(7) {
+          grid-column: span 12 / span 12;
+        }
       }
     }
   }

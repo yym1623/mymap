@@ -19,19 +19,19 @@ const items = ref([
     label: 'Apps',
     items: [
       {
-        label: 'Map',
+        label: 'Edit',
         icon: 'pi pi-map',
-        path: '/Apps/Map'
+        path: '/Apps/Edit'
       },
+      // {
+      //   label: 'Calendar',
+      //   icon: 'pi pi-calendar',
+      //   path: '/Apps/Calendar'
+      // },
       {
-        label: 'Calendar',
-        icon: 'pi pi-calendar',
-        path: '/Apps/Calendar'
-      },
-      {
-        label: 'Msg',
-        icon: 'pi pi-comment',
-        path: '/Apps/Msg'
+        label: 'Chat',
+        icon: 'pi pi-comments',
+        path: '/Apps/Chat'
       }
     ]
   },
@@ -42,11 +42,6 @@ const items = ref([
         label: 'Star',
         icon: 'pi pi-bookmark',
         path: '/My/Star'
-      },  
-      {
-        label: 'Cart',
-        icon: 'pi pi-shopping-cart',
-        path: '/My/Cart'
       },
       {
         label: 'Info',
