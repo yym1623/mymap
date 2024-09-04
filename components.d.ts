@@ -18,6 +18,7 @@ declare module 'vue' {
     DashBoard: typeof import('./src/components/DashBoard.vue')['default']
     DataView: typeof import('primevue/dataview')['default']
     DatePicker: typeof import('primevue/datepicker')['default']
+    Dialog: typeof import('primevue/dialog')['default']
     Dropdown: typeof import('primevue/dropdown')['default']
     Edit: typeof import('./src/components/Apps/Edit.vue')['default']
     Editor: typeof import('primevue/editor')['default']
