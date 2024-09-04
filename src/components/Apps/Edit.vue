@@ -9,6 +9,11 @@ const mapOptions = {
   latitude: 37.51347, // 지도 중앙 위도
   longitude: 127.041722, // 지도 중앙 경도
   zoom: 13,
+
+  // 지도 유형 컨트롤 표시 여부
+  // mapTypeControl: true,
+  // 지도 데이터 저작권 컨트롤 표시 여부
+  mapDataControl: false,
 }
 
 // data
