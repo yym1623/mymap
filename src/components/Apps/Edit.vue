@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { NaverMap } from 'vue3-naver-maps'
-import { NaverMarker } from 'vue3-naver-maps'
+import { NaverMap, NaverMarker } from 'vue3-naver-maps'
 
 import Calendar from 'primevue/calendar';
 
-const mapOptions = {
+
+
+// data
+
+// map
+const mapOptions = ref({
   latitude: 37.51347, // 지도 중앙 위도
   longitude: 127.041722, // 지도 중앙 경도
   zoom: 13,
@@ -14,16 +18,18 @@ const mapOptions = {
   // mapTypeControl: true,
   // 지도 데이터 저작권 컨트롤 표시 여부
   mapDataControl: false,
-}
+})
 
-// data
+// today date
+const today = ref<Date>(new Date) // today - new Date -> detail -> new Date ++ ..today.month() ..year
+
 const mapActive = ref<boolean>(false)
 const allCheck = ref<boolean>(false)
 const myPoint = ref<boolean>(false)
 const myPlus = ref<boolean>(false)
 
 const inputValue = ref<string | undefined>()
-const dataValue = ref<Date | Date[] | (Date | null)[] | null | undefined>();
+const dataValue = ref<Date | Date[] | (Date | null)[] | null | undefined>(today.value);
 const editValue = ref<string | undefined>();
 
 
@@ -38,12 +44,29 @@ function allCheckBtn(): void {
 
 function myPointBtn(): void {
   myPoint.value = !myPoint.value
+
+  if ("geolocation" in navigator) {
+    /* 위치정보 사용 가능 */
+    navigator.geolocation.getCurrentPosition((position) => {
+      // 위도, 경도
+      mapOptions.value.latitude = position.coords.latitude
+      mapOptions.value.longitude = position.coords.longitude
+    });
+  } else {
+    /* 위치정보 사용 불가능 */
+  }
 }
 
 function myPlusBtn(): void {
   myPlus.value = !myPlus.value
 }
 
+function myPlusSaveBtn(): void {
+  // axios.. 
+  // inputValue.value // 제목
+  // dataValue.value // 날짜
+  // editValue.value // 컨텐츠
+}
 
 </script>
 
@@ -63,13 +86,10 @@ function myPlusBtn(): void {
             <Button icon="pi pi-map-marker" severity="success" rounded aria-label="Marker" @click="myPointBtn()" />
             <Button class="margin-left" icon="pi pi-plus" severity="success" rounded aria-label="Plus" @click="myPlusBtn()" />
           </div>
-          <naver-map
-            class="map-size"
-            :map-options="mapOptions"
-            >
+          <naver-map class="map-size" :map-options="mapOptions">
             <naver-marker
-            :latitude="mapOptions.latitude"
-            :longitude="mapOptions.longitude"
+              :latitude="mapOptions.latitude"
+              :longitude="mapOptions.longitude"
             />
           </naver-map>
         </div>
@@ -92,7 +112,7 @@ function myPlusBtn(): void {
 
       <div class="flex gap-2 justify-content-end">
           <Button type="button" label="Cancel" severity="secondary" @click="myPlus = false"></Button>
-          <Button type="button" label="Save"></Button>
+          <Button type="button" label="Save" @click="myPlusSaveBtn()"></Button>
       </div>
     </Dialog>
   </div>
