@@ -20,6 +20,15 @@ const mapOptions = ref({
   mapDataControl: false,
 })
 
+// test marker data
+const mapMarkerData = ref([
+  { id : 1, lat: 37.51347, lng: 127.041722, imageUrl: 'https://i.redd.it/w3kr4m2fi3111.png'},
+  { id : 2, lat: 45.41347, lng: 130.041722, imageUrl: 'https://i.redd.it/w3kr4m2fi3111.png'},
+  { id : 3, lat: 40.41347, lng: 150.041722, imageUrl: 'https://i.redd.it/w3kr4m2fi3111.png'},
+  { id : 4, lat: 20.41347, lng: 170.041722, imageUrl: 'https://i.redd.it/w3kr4m2fi3111.png'},
+  { id : 5, lat: 55.41347, lng: 180.041722, imageUrl: 'https://i.redd.it/w3kr4m2fi3111.png'},
+])
+
 // today date
 const today = ref<Date>(new Date) // today - new Date -> detail -> new Date ++ ..today.month() ..year
 
@@ -57,6 +66,10 @@ function myPointBtn(): void {
   }
 }
 
+function markerPositionBtn(): void {
+  
+}
+
 function myPlusBtn(): void {
   myPlus.value = !myPlus.value
 }
@@ -87,17 +100,25 @@ function myPlusSaveBtn(): void {
             <Button class="margin-left" icon="pi pi-plus" severity="success" rounded aria-label="Plus" @click="myPlusBtn()" />
           </div>
           <naver-map class="map-size" :map-options="mapOptions">
+            <!-- data 1 - marker 1 -->
             <naver-marker
-              :latitude="mapOptions.latitude"
-              :longitude="mapOptions.longitude"
-            />
+              @click="markerPositionBtn()"
+              v-for="data in mapMarkerData"
+              :key="data.id"
+              :latitude="data.lat"
+              :longitude="data.lng"
+            >
+              <div class="marker">
+                <img style="width: 200px; height: 200px" :src="data.imageUrl">
+              </div>
+            </naver-marker>
           </naver-map>
         </div>
       </div>
     </div>
 
 
-    <Dialog class="dialog-margin" v-model:visible="myPlus" :style="{ width: '25rem' }" position="bottomright" >
+    <Dialog class="dialog" v-model:visible="myPlus" position="bottomright" >
       <TabView>
         <TabPanel header="위치등록">
           <FloatLabel class="address-info">
@@ -111,8 +132,8 @@ function myPlusSaveBtn(): void {
       </TabView>
 
       <div class="flex gap-2 justify-content-end">
-          <Button type="button" label="Cancel" severity="secondary" @click="myPlus = false"></Button>
-          <Button type="button" label="Save" @click="myPlusSaveBtn()"></Button>
+        <Button type="button" label="Cancel" severity="secondary" @click="myPlus = false"></Button>
+        <Button type="button" label="Save" @click="myPlusSaveBtn()"></Button>
       </div>
     </Dialog>
   </div>
@@ -131,10 +152,12 @@ function myPlusSaveBtn(): void {
 }
 
 /* 전역 */
-.dialog-margin {
+.dialog {
   margin: 3rem 2rem;
   border-radius: 6px;
+  width: 25rem;
 }
+
 .input {
   width: 100%;
   margin-top: 1rem;
