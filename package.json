@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.0",
+    "@types/navermaps": "^3.7.6",
     "@vueuse/core": "^11.0.3",
     "chart.js": "^4.4.4",
     "pinia": "^2.2.2",
